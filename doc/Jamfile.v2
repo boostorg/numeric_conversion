@@ -5,9 +5,4 @@ xml conversion : conversion.qbk ;
 boostbook standalone : conversion :
     <xsl:param>boost.root=../../../../..
     <xsl:param>boost.libraries=../../../../libraries.htm
-    <xsl:param>html.stylesheet=../../../../../doc/html/boostbook.css
-    <xsl:param>chunk.first.sections=1
-    <xsl:param>chunk.section.depth=2
-    <xsl:param>generate.section.toc.level=2
-    <xsl:param>toc.section.depth=1
-    <xsl:param>toc.max.depth=1 ;
+    <xsl:param>html.stylesheet=../../../../../doc/html/boostbook.css ;
