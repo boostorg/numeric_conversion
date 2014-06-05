@@ -8,6 +8,7 @@
 //  See http://www.boost.org/libs/conversion for Documentation.
 
 //  Revision History
+//  02 Jun 14  Remove VC6 workarounds.
 //  16 Jul 11  Bugfixes for VC6.
 //  23 JUN 05  Code extracted from /boost/cast.hpp into this new header.
 //             Keeps this legacy version of numeric_cast<> for old compilers
@@ -53,7 +54,6 @@
 # include <boost/type.hpp>
 # include <boost/limits.hpp>
 # include <boost/numeric/conversion/converter_policies.hpp>
-# include <boost/mpl/if.hpp>
 
 namespace boost
 {
@@ -84,11 +84,10 @@ namespace boost
       // Move to namespace boost in utility.hpp?
       template <class T, bool specialized>
       struct fixed_numeric_limits_base
-          : public BOOST_DEDUCED_TYPENAME ::boost::mpl::if_c<
-                    std::numeric_limits<T>::is_signed,
-                    BOOST_DEDUCED_TYPENAME signed_numeric_limits<T>,
-                    BOOST_DEDUCED_TYPENAME std::numeric_limits<T>
-                >::type
+          : public if_true< std::numeric_limits<T>::is_signed >
+           ::BOOST_NESTED_TEMPLATE then< signed_numeric_limits<T>,
+                            std::numeric_limits<T>
+                   >::type
       {};
 
       template <class T>
