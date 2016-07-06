@@ -454,9 +454,6 @@ namespace boost { namespace numeric { namespace convdetail
   {
     typedef Traits traits ;
     
-    typedef typename Traits::argument_type argument_type;
-    typedef typename Traits::result_type result_type;
-
     typedef typename Traits::source_type   source_type   ;
     typedef typename Traits::argument_type argument_type ;
     typedef typename Traits::result_type   result_type   ;
@@ -475,9 +472,6 @@ namespace boost { namespace numeric { namespace convdetail
                              ,public Float2IntRounder
                              ,public RawConverter
   {
-    typedef typename Traits::argument_type argument_type;
-    typedef typename Traits::result_type result_type;
-    
     typedef RangeChecker     RangeCheckerBase ;
     typedef Float2IntRounder Float2IntRounderBase ;
     typedef RawConverter     RawConverterBase ;
@@ -504,9 +498,6 @@ namespace boost { namespace numeric { namespace convdetail
   struct non_rounding_converter : public RangeChecker
                                  ,public RawConverter
   {
-    typedef typename Traits::argument_type argument_type;
-    typedef typename Traits::result_type result_type;
-    
     typedef RangeChecker RangeCheckerBase ;
     typedef RawConverter RawConverterBase ;
 
