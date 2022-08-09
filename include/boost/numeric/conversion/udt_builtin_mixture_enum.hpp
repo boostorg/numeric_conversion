@@ -12,7 +12,7 @@
 
 namespace boost { namespace numeric
 {
-  enum udt_builtin_mixture_enum
+  enum udt_builtin_mixture_enum: int
   {
      builtin_to_builtin
     ,builtin_to_udt

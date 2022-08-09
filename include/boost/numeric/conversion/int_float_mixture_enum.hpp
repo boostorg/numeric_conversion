@@ -12,7 +12,7 @@
 
 namespace boost { namespace numeric
 {
-  enum int_float_mixture_enum
+  enum int_float_mixture_enum: int
   {
      integral_to_integral
     ,integral_to_float

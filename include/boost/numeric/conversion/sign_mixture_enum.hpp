@@ -12,7 +12,7 @@
 
 namespace boost { namespace numeric
 {
-  enum sign_mixture_enum
+  enum sign_mixture_enum: int
   {
      unsigned_to_unsigned
     ,signed_to_signed
