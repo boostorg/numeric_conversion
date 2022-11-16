@@ -10,6 +10,7 @@ on:
 
 env:
   UBSAN_OPTIONS: print_stacktrace=1
+  LIBRARY: numeric/conversion
 
 jobs:
   posix:
@@ -152,10 +153,6 @@ jobs:
 
       - name: Setup Boost
         run: |
-          echo GITHUB_REPOSITORY: $GITHUB_REPOSITORY
-          LIBRARY=${GITHUB_REPOSITORY#*/}
-          echo LIBRARY: $LIBRARY
-          echo "LIBRARY=$LIBRARY" >> $GITHUB_ENV
           echo GITHUB_BASE_REF: $GITHUB_BASE_REF
           echo GITHUB_REF: $GITHUB_REF
           REF=${GITHUB_BASE_REF:-$GITHUB_REF}
@@ -216,10 +213,6 @@ jobs:
       - name: Setup Boost
         shell: cmd
         run: |
-          echo GITHUB_REPOSITORY: %GITHUB_REPOSITORY%
-          for /f %%i in ("%GITHUB_REPOSITORY%") do set LIBRARY=%%~nxi
-          echo LIBRARY: %LIBRARY%
-          echo LIBRARY=%LIBRARY%>>%GITHUB_ENV%
           echo GITHUB_BASE_REF: %GITHUB_BASE_REF%
           echo GITHUB_REF: %GITHUB_REF%
           if "%GITHUB_BASE_REF%" == "" set GITHUB_BASE_REF=%GITHUB_REF%
@@ -229,7 +222,7 @@ jobs:
           cd ..
           git clone -b %BOOST_BRANCH% --depth 1 https://github.com/boostorg/boost.git boost-root
           cd boost-root
-          xcopy /s /e /q %GITHUB_WORKSPACE% libs\%LIBRARY%\
+          xcopy /s /e /q %GITHUB_WORKSPACE% libs\%LIBRARY:/=\%\
           git submodule update --init tools/boostdep
           python tools/boostdep/depinst/depinst.py --git_args "--jobs 3" %LIBRARY%
           cmd /c bootstrap
