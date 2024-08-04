@@ -11,6 +11,7 @@ import testing ;
 project numeric_conversion_unit_tests
     :
     requirements
+        <library>/boost/numeric_conversion//boost_numeric_conversion
         <include>.
         <toolset>gcc:<cxxflags>"-ftemplate-depth-300 -g0"
         <toolset>darwin:<cxxflags>"-ftemplate-depth-300 -g0"
