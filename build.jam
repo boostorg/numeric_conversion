@@ -15,12 +15,11 @@ constant boost_dependencies :
     /boost/type_traits//boost_type_traits ;
 
 project /boost/numeric_conversion
-    : common-requirements
-        <include>include
     ;
 
 explicit
-    [ alias boost_numeric_conversion : : : : <library>$(boost_dependencies) ]
+    [ alias boost_numeric_conversion : : :
+        : <include>include <library>$(boost_dependencies) ]
     [ alias all : boost_numeric_conversion test ]
     ;
 
