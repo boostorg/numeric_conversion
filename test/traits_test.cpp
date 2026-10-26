@@ -15,6 +15,7 @@
 #include <boost/cstdint.hpp>
 #include <boost/utility.hpp>
 #include <boost/preprocessor/cat.hpp>
+#include <boost/type_traits/integral_constant.hpp>
 
 #include <boost/numeric/conversion/conversion_traits.hpp>
 #include <boost/numeric/conversion/int_float_mixture.hpp>
@@ -57,13 +58,13 @@ template<class T, class S> struct my_udt_builtin_mixture ;
           { typedef mpl::bool_< (Trivial) > type ; } ;  \
                                                                                                  \
         template<> struct my_int_float_mixture<Target,Source>                                    \
-          { typedef mpl::integral_c<boost::numeric::int_float_mixture_enum, (Mixture) > type ; } ;    \
+          { typedef boost::integral_constant<boost::numeric::int_float_mixture_enum, (Mixture) > type ; } ;    \
                                                                                                  \
         template<> struct my_sign_mixture<Target,Source>                                         \
-          { typedef mpl::integral_c<boost::numeric::sign_mixture_enum, (SignMixture) > type ; } ;     \
+          { typedef boost::integral_constant<boost::numeric::sign_mixture_enum, (SignMixture) > type ; } ;     \
                                                                                                  \
         template<> struct my_udt_builtin_mixture<Target,Source>                                  \
-          { typedef mpl::integral_c<boost::numeric::udt_builtin_mixture_enum, (UdtMixture) > type ; }
+          { typedef boost::integral_constant<boost::numeric::udt_builtin_mixture_enum, (UdtMixture) > type ; }
 
 
 #define cSubRanged true

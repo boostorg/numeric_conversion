@@ -22,6 +22,7 @@ test-suite minimal
         [ run bounds_test.cpp ]
         [ run traits_test.cpp : : : <toolset>msvc:<cxxflags>/bigobj ]
         [ run converter_test.cpp ]
+        [ run rounding_enum_test.cpp ]
         [ run udt_support_test.cpp ]
         [ run numeric_cast_test.cpp ]
         [ run udt_example_0.cpp ]
