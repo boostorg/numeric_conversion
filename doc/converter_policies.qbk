@@ -139,7 +139,7 @@ The policy must have the following interface:
 
         static source_type nearbyint ( argument_type s ) { ... }
 
-        typedef mpl::integral_c<std::float_round_style,std::round_...> round_style ;
+        typedef boost::integral_constant<std::float_round_style,std::round_...> round_style ;
 
     } ;
 
@@ -165,7 +165,7 @@ but specific policies for `converter<>`. This is why they are not function objec
                 return s >= static_cast<S>(0) ? floor(s) : ceil(s) ;
             }
 
-            typedef mpl::integral_c<std::float_round_style,std::round_toward_zero> round_style ;
+            typedef boost::integral_constant<std::float_round_style,std::round_toward_zero> round_style ;
         } ;
 
 
@@ -177,7 +177,7 @@ but specific policies for `converter<>`. This is why they are not function objec
                 return impl-defined-value ;
             }
 
-            typedef mpl::integral_c<std::float_round_style,std::round_to_nearest> round_style ;
+            typedef boost::integral_constant<std::float_round_style,std::round_to_nearest> round_style ;
         } ;
 
 
@@ -190,7 +190,7 @@ but specific policies for `converter<>`. This is why they are not function objec
                 return ceil(s) ;
             }
 
-            typedef mpl::integral_c<std::float_round_style,std::round_toward_infinity> round_style ;
+            typedef boost::integral_constant<std::float_round_style,std::round_toward_infinity> round_style ;
         } ;
 
 
@@ -202,7 +202,7 @@ but specific policies for `converter<>`. This is why they are not function objec
                 using std::floor ;
                 return floor(s) ;
             }
-            typedef mpl::integral_c<std::float_round_style,std::round_toward_neg_infinity> round_style ;
+            typedef boost::integral_constant<std::float_round_style,std::round_toward_neg_infinity> round_style ;
         } ;
 
     } } // namespace numeric, namespace boost
